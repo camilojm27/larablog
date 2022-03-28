@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<title>My Blog</title>
-<link rel="stylesheet" href="/app.css">
+@extends('layout')
+@section('content')
+    <article>
+        <h1>{{$post->title}}</h1>
+        <p>By <a href="#">{{$post->user->name}}</a> in <a href="/categories/{{ $post->category->slug }}"> {{$post->category->name}} </a> </p>
+        <p>
+            <a href="/categories/{{$post->category->slug }}">{{ $post->category->name }}</a>
+        </p>
+        <div>
+            <?= $post->body; ?>
+        </div>
+    </article>
 
-<body>
-<article>
-    <h1><?= $post->title; ?></h1>
-    <div>
-        <?= $post->body; ?>
-    </div>
-</article>
-
-<a href="/">Go back</a>
-</body>
+    <a href="/">Go back</a>
+@endsection
